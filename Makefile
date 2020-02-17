@@ -11,3 +11,6 @@ test:
 
 stop:
 	docker-compose down
+
+shell:
+	docker-compose run --rm project /bin/bash
