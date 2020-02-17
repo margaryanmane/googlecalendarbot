@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400,700');
+
+@import url(https://fonts.googleapis.com/css?family=Khula:700);
+
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background-color: #222229;
+    height: 200vh;
+    font-family: 'Muli', sans-serif;
+  }
+  a{
+      text-decoration: none;
+  }
+  /*slack top*/
+  .text {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    list-style: none;
+    border-bottom: 0;
+   
+   
+  }
+  
+  .text.hidden {
+    border-bottom: 1px solid #fff;
+  }
+
+  .text li {
+
+    display: inline-block;
+    float: left;
+    font-weight: 700;
+    font-size: 2.4em;
+    color: #fff;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+    max-width: 2em;
+    text-transform: uppercase;
+  }
+  .text.hidden li.spaced {
+    padding-left: 0;
+  }
+  .text li.spaced {
+    padding-left: 0.5em;
+  }
+  
+  .text.hidden li.ghost {
+    opacity: 0;
+    max-width: 0;
+}
+
+/*middle textInfo*/
+
+.console-container{
+    font-family: Khula;
+    font-size: 1.3em;
+    text-align: center;
+    height: 50px;
+    width: 600px;
+    display: block;
+    position: fixed;
+    top: -12%;
+    bottom: 0;
+    left: 27%;
+    margin: auto;
+}
+
+.console-underscore {
+    display: inline-block;
+    position: relative;
+    top: -0.14em;
+    left:10px;
+}
+
+
+/*add to slack*/
+.scene{
+    perspective: 1000;
+    width: 10em;
+    position: fixed;
+    top:60%;
+    left: 50%;
+    margin-left: -5em;
+    margin-top: -5em;
+
+}
+img{
+    width: 24px;
+    height: 24px;
+
+}
+.cube{
+    color:#ccc;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.85s cubic-bezier(.17,.67,.14,.93);
+    transform-style: preserve-3d;
+    transform-origin: 100% 50%;
+    width: 10em;
+    height: 4em;;
+
+}
+.cube:hover{
+    transform: rotateX(-90deg);
+}
+
+.side {
+    box-sizing: border-box;
+    position: absolute;
+    display: inline-block;
+    height: 4em;
+    width: 10em;
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 1.42em;
+}
+
+.top{
+    background: #fff;
+    color: #222229;
+    /* box-shadow: inset 0 0 0 5px #fff; */
+    transform: rotateX(90deg) translate3d(0,0,2em);
+}
+
+.frontImg {
+    background: #222229;
+    color:#fff;
+    box-shadow: inset 0 0 0 5px #fff;
+    transform: translate3d(0, 0, 2em);
+}
+
+/*responce*/
+
+@media screen and (min-width:320px) and ( max-width:359px){
+  .text li {
+    font-weight: 400;
+    font-size: 0.61em;
+  }
+  .console-container{
+    left:-44%;
+    font-size: 0.7em;
+  }
+} 
+
+ @media screen and (min-width:360px) and ( max-width:374px){
+  .text li {
+    font-weight: 400;
+    font-size: 0.58em;
+  }
+  .console-container{
+    left:-31.9%; 
+    font-size: 0.7em;
+  }
+}
+
+@media screen and (min-width:375px) and ( max-width:385px){
+  .text li {
+    font-weight: 400;
+    font-size: 0.7em;
+  }
+  .console-container{
+    left:-30%; 
+    font-size: 0.7em;
+  }
+}
+
+@media screen and (min-width:385px) and (max-width:411px){
+  .text li {
+    font-weight: 400;
+    font-size: 0.78em;
+  } 
+  .console-container{
+    left:-23%;
+    font-size: 0.8em;
+  }
+}
+
+@media screen and (min-width:412px) and (max-width:415px){
+  .text li{
+    font-weight: 400;
+    font-size: 0.78em;
+  }
+  .console-container{
+    left:-22%;
+    font-size: 0.8em;
+  }
+}
+
+@media screen and (min-width:640px) and ( max-width:767px){ 
+  .text li {
+    font-weight: 400;
+    font-size: 1.1em;
+  }
+  .console-container{
+    left:3.5%;
+    top:-20%;
+    font-size: 0.7em;
+  }
+  .scene{
+    top:68%;
+  }
+} 
+
+@media screen and (min-width:768px) and ( max-width:1023px){
+  .text li {
+    font-weight: 600;
+    font-size: 1.4em;
+  }
+  .console-container{
+    left:11%;
+    font-size: 1.1em;
+  }
+} 
+
+@media screen and (min-width:1024px) and (max-width:1030px){
+  .text li {
+  font-weight: 600;
+  font-size: 1.9em;
+  }
+  .console-container{
+    left:20%;
+    font-size: 1.4em;
+  }
+}
+
+/*@media screen and (min-width:1304px) and (max-width:1310px){*/
+/*  .text li {*/
+/*  font-weight: 600;*/
+/*  font-size: 1.9em;*/
+/*  }*/
+/*  .console-container{*/
+/*    left:20%;*/
+/*    font-size: 1.4em;*/
+/*  }*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+/*----------about and help page ----------*/
+
+
+.bodyAH{
+  background-color: #16161b;
+  height: 770px;
+}
+
+.headHelp{
+  background-color: #16161b;
+  box-shadow: inset 0 0 10px #4e4e53,
+  inset 0 0 15px #646469;
+  display: flex;
+}
+
+.logoImg img{
+  width:80px;
+  height: 80px;
+  padding: 10px 15px;
+}
+
+.gCalendar{
+  width: 80%;
+  /* position: relative; */
+  margin: 7% auto;
+  padding: 5px;
+  
+}
+
+.gCalendar h1{
+  text-align: center;
+  color: white;
+}
+
+.gCalendar p {
+  color: white;
+  font-size: 18px;
+  margin-top: 45px;
+}
+
+
+
+.logoImg{
+  /* display: flex; */
+}
+
+
+
+.gcbHelp h1{
+  margin: 25px 0 0 980px; 
+  font-size: 36px;
+  color: #d0d0ee;
+}
+
+.helpGCB{
+  width:80%;
+  margin: 7% auto;
+  padding: 5px;
+  background-color: #16161b;
+  box-shadow: inset 0 0 20px #4e4e53,
+  inset 0 0 25px #646469;
+  
+}
+
+
+.helpGCB p{
+  font-size: 30px;
+  color: #d0d0ee;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+.addGCB{
+  width:60%;
+  height: 60%;
+  background-color:#bbbbe4;
+  box-shadow: inset 0 0 30px #4e4e53,
+  inset 0 0 35px #646469;
+  margin: 70px 20%;
+}
+
+.helpGCB img{
+  width: 74%;
+  height: 74%;
+  margin: 13%;
+}
+
+
+/*--------------success------------*/
+
+.successColor{
+  background-color: #222229;
+  position:relative;
+}
+.success{
+  position: fixed;
+  font-size: 20px;
+color:white;
+padding: 20% 5%;
+}

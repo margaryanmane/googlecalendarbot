@@ -24,5 +24,3 @@ ADD . /project/
 
 RUN python3 -m pip install -r requirements/requirements.txt
 RUN python3 -m pip install -e .
-
-CMD ["python3","app.py"]

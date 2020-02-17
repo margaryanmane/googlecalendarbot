@@ -4,12 +4,14 @@ services:
   project:
     container_name: gcalendar
     image: calendar
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     depends_on:
       - redis
     command: python3 app.py flask run
     ports:
-      - "8000:8000"
+      - "5000:5000"
     volumes:
       - .:/project
     env_file:

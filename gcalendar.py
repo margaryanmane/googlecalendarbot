@@ -7,7 +7,7 @@ from apiclient import discovery
 import oauth2client
 from oauth2client import client
 
-SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
+SCOPES = ['https://www.googleapis.com/auth/calendar.readonly', 'https://www.googleapis.com/auth/calendar.events']
 
 FLOW_MAP = {}
 
@@ -125,3 +125,35 @@ def get_scheduled_events(events):
         data_list.append(attachment)
 
     return data_list
+
+
+def schedule_event(event_data, user_id):
+    emails = event_data['attendees'].split()
+    emails_data = []
+    for email in emails:
+        emails_data.append({'email': email})
+    event = {
+        'summary': event_data['title'],
+        'start': {
+            'dateTime': event_data['start_date'],
+            'timeZone': 'Asia/Yerevan',
+        },
+        'end': {
+            'dateTime': event_data['end_date'],
+            'timeZone': 'Asia/Yerevan',
+        },
+        'attendees': emails_data,
+        'reminders': {
+            'useDefault': False,
+            'overrides': [
+                {'method': 'email', 'minutes': 24 * 60},
+                {'method': 'popup', 'minutes': 10},
+            ],
+        },
+    }
+
+    credentials = get_credentials(user_id)
+
+    http = credentials.authorize(httplib2.Http())
+    service = discovery.build('calendar', 'v3', http=http)
+    event = service.events().insert(calendarId='primary', body=event).execute()
