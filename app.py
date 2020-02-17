@@ -8,7 +8,7 @@ from slackeventsapi import SlackEventAdapter
 from settings import *
 from gcalendar import get_auth_url, set_auth_token, calendar_usage, schedule_event
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 app.debug = True
 
@@ -29,8 +29,8 @@ def handle_message(event_data):
     user = message["user"]
     attachments = ""
     response = ""
-    team = event_data["team_id"]
 
+    team = event_data["team_id"]
     home_dir = os.getcwd()
     credential_dir = os.path.join(home_dir, 'user_credentials')
     credential_path = os.path.join(credential_dir, 'tokens.json')
@@ -91,7 +91,7 @@ def handle_message(event_data):
 @app.route("/", methods=["GET"])
 def message_index():
 
-    return render_template('index.html', title='Register Slack Google Calendar App')
+    return render_template('index.html')
 
 
 @app.route("/slack/install", methods=["GET"])
@@ -138,6 +138,24 @@ def message_actions():
     message_action = json.loads(request.form["payload"])
     user_id = message_action["user"]["id"]
     callback_id = 'set_calendar_event'
+
+    team = message_action["team"]["id"]
+    home_dir = os.getcwd()
+    credential_dir = os.path.join(home_dir, 'user_credentials')
+    credential_path = os.path.join(credential_dir, 'tokens.json')
+    with open(credential_path) as json_file:
+        try:
+            all_team_data = json.load(json_file)
+        except json.decoder.JSONDecodeError:
+            all_team_data = []
+
+    access_token = USER_OAUTH_ACCESS_TOKEN
+    for team_data in all_team_data:
+        if team_data['team_id'] == team:
+            access_token = team_data["access_token"]
+
+    slack_client = slack.WebClient(access_token)
+
     if message_action["type"] == "interactive_message":
         slack_client.dialog_open(
             trigger_id=message_action["trigger_id"],
